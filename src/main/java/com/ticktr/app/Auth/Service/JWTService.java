@@ -53,7 +53,7 @@ public class JWTService {
                 .expiration(
                         new Date(
                                 System.currentTimeMillis()
-                                        + 1000 * 60 * 15
+                                        + 1000 * 60 * 60 * 7
                         )
                 )
                 .signWith(
