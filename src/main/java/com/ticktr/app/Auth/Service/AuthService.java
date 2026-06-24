@@ -28,6 +28,10 @@ public class AuthService {
 
     public AuthResponseDTO create(@NonNull RegisterDTO dto){
         Optional<User> user = userRepo.findByEmail(dto.email());
+        if(user.isPresent()){
+            throw new RuntimeException("User already exists");
+        }
+
         String passwordHash = passwordEncoder.encode(dto.password());
         User newUser = new User(
                 dto.name(),
